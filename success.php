@@ -35,7 +35,8 @@
 		<script>
 			if (window.opener && window.opener.uiLoggedIn) {
 				// we are not in a inAppBrowser
-				window.opener.uiLoggedIn('<?php echo $access_token ?>','<?php echo $refresh_token ?>','<?php echo $user_id ?>');
+				window.opener.uiLoggedIn('Logged in.','<?php echo $access_token ?>','<?php echo $refresh_token ?>','<?php echo $user_id ?>');
+				window.close();
 			}
 		</script>
 				

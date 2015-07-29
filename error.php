@@ -31,6 +31,7 @@
 			if (window.opener && window.opener.uiLoggedOut) {
 				// we are not in a inAppBrowser
 				window.opener.uiLoggedOut("<?php echo implode(',',$messages) ?>");
+				window.close();
 			}
 		</script>
 	</body>
