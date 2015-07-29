@@ -32,5 +32,12 @@
 			<button>reconnect</button>
 		</form>
 		<a href="login.php">login again</a>
+		<script>
+			if (window.opener && window.opener.uiLoggedIn) {
+				// we are not in a inAppBrowser
+				window.opener.uiLoggedIn('<?php echo $access_token ?>','<?php echo $refresh_token ?>','<?php echo $user_id ?>');
+			}
+		</script>
+				
 	</body>
 </html>

@@ -115,7 +115,8 @@
 				
 				if ($uid = dbGetUserID($info->id) !== false) {
 				
-					if (dbUpdateUser($uid, $info)) {
+					if (dbLoginUser($uid)) {
+						dbUpdateUser($uid, $info);
 						$success=true;
 					} else {
 						$messages[] = 'dbUpdateUser: '. mysqli_error();
@@ -123,6 +124,7 @@
 					
 				} else {
 					if ($uid = dbCreateUser($info)) {
+						dbLoginUser($uid);
 						$success=true;
 					} else {
 						$messages[] = 'dbCreateUser: '. mysqli_error();

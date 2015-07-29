@@ -158,6 +158,26 @@
 		return false;
 	}
 	
+	function dbLoginUser($uid) {
+		global $mysqli;
+		mysqlConnect();
+		$query = 'UPDATE users SET ';
+		$query .= 'loggedin = TRUE ';
+		$query .= 'WHERE id = "'.$uid.'" ';
+		$res = $mysqli->query($query) or fatal('dbLoginUser',mysqli_error($mysqli));
+		return $res;
+	}
+	
+	function dbLogoutUser($uid) {
+		global $mysqli;
+		mysqlConnect();
+		$query = 'UPDATE users SET ';
+		$query .= 'loggedin = FALSE ';
+		$query .= 'WHERE id = "'.$uid.'" ';
+		$res = $mysqli->query($query) or fatal('dbLogoutUser',mysqli_error($mysqli));
+		return $res;
+	}
+	
 	function dbUpdateUser($uid,$info) {
 		global $mysqli;
 		mysqlConnect();

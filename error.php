@@ -27,5 +27,11 @@
 			<?php } ?>
 		</ul>
 		<a href="login.php">try again</a>
+		<script>
+			if (window.opener && window.opener.uiLoggedOut) {
+				// we are not in a inAppBrowser
+				window.opener.uiLoggedOut("<?php echo implode(',',$messages) ?>");
+			}
+		</script>
 	</body>
 </html>

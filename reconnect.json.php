@@ -64,10 +64,11 @@
 			
 		if (!$info->error) {
 
-		if ($uid = dbGetUserID($info->id) !== false) {
-		
-			if (dbUpdateUser($uid, $info)) {
+		if ($uid = dbGetUserID($info->id)) {
+			if (dbLoginUser($uid)) {
+				dbUpdateUser($uid, $info);
 				$success=true;
+				$result['user_id']=$uid;
 			} else {
 				$messages[] = 'dbUpdateUser: '. mysqli_error();
 			}
