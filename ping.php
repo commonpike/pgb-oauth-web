@@ -1,5 +1,6 @@
 <?php
 	
-	echo "pong"
+	header('Access-Control-Allow-Origin: *');
+	echo "pong";
 	
 ?>
